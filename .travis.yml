@@ -71,7 +71,6 @@ script:
 
     - bin/phpunit
     - bin/phpspec run
-    - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun
 
 after_failure:
     - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${BUILD_DIR}/*.log"

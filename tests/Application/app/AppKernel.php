@@ -17,10 +17,25 @@ final class AppKernel extends Kernel
         ];
 
         $bundles = [
-            new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle()
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Symfony\Bundle\TwigBundle\TwigBundle(),
+            new \Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new \Symfony\Bundle\MonologBundle\MonologBundle(),
+            new \Symfony\Bundle\WebServerBundle\WebServerBundle(), // allows to run build in web server. Not recommended for prod environment
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
+            new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new \FOS\RestBundle\FOSRestBundle(),
+            new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         ];
 
-        return array_merge($preResourceBundles, parent::registerBundles(), $bundles);
+        return array_merge($preResourceBundles, $bundles);
     }
 
     /**

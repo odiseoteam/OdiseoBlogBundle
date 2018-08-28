@@ -5,10 +5,6 @@ doctrine:
     dbal:
         path: "%kernel.project_dir%/var/db_dev.sql"
 
-web_profiler:
-  toolbar: true
-  intercept_redirects: false
-
 framework:
     router:
         resource: "%kernel.project_dir%/app/config/routing_dev.yml"

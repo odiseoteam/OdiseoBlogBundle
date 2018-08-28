@@ -10,6 +10,7 @@
         "sylius/resource-bundle": "~1.2.0",
         "sylius/grid-bundle": "~1.2.0",
         "symfony/framework-bundle": "^3.4|^4.1",
+        "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "^1.0"
     },
     "require-dev": {
@@ -30,7 +31,8 @@
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
         "phpunit/phpunit": "^6.5",
-        "sylius-labs/coding-standard": "^2.0"
+        "sylius-labs/coding-standard": "^2.0",
+        "symfony/web-server-bundle": "^4.1"
     },
     "prefer-stable": true,
     "autoload": {
