@@ -1,58 +1,77 @@
 language: php
+
+dist: trusty
+
 sudo: false
+
+php:
+    - 7.2
+
 cache:
+    yarn: true
     directories:
-        - $HOME/.composer/cache/files
-        - $HOME/symfony-bridge/.phpunit
+        - ~/.composer/cache/files
+        - $CACHE_DIR
 
 env:
     global:
-        - PHPUNIT_FLAGS="-v"
-        - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
-
-matrix:
-    fast_finish: true
-    include:
-          # Minimum supported dependencies with the latest and oldest PHP version
-        - php: 7.2
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
-        - php: 7.0
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
-
-          # Test the latest stable release
-        - php: 7.0
-        - php: 7.1
-        - php: 7.2
-          env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
-
-          # Test LTS versions. This makes sure we do not use Symfony packages with version greater
-          # than 2 or 3 respectively. Read more at https://github.com/symfony/lts
-        - php: 7.2
-          env: DEPENDENCIES="symfony/lts:^2"
-        - php: 7.2
-          env: DEPENDENCIES="symfony/lts:^3"
-
-          # Latest commit to master
-        - php: 7.2
-          env: STABILITY="dev"
-
-    allow_failures:
-          # Dev-master is allowed to fail.
-        - env: STABILITY="dev"
+        - CACHE_DIR=$HOME/.cache
+        - BUILD_DIR=etc/build
+    matrix:
+        - SYMFONY_VERSION="3.4.*"
+        - SYMFONY_VERSION="4.1.*"
 
 before_install:
-    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
-    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+    - phpenv config-rm xdebug.ini
+    - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+    - mkdir -p "${CACHE_DIR}"
 
 install:
-    # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
-    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
-    - ./vendor/bin/simple-phpunit install
+    - composer require "symfony/symfony:${SYMFONY_VERSION}" --no-interaction --no-update
+    - composer install --no-interaction --prefer-dist
+
+before_script:
+    - (cd tests/Application && bin/console doctrine:database:create --env=test -vvv)
+    - (cd tests/Application && bin/console doctrine:schema:create --env=test -vvv)
+    - (cd tests/Application && bin/console assets:install web --env=test -vvv)
+    - (cd tests/Application && bin/console cache:warmup --env=test -vvv)
+
+    # Configure display
+    - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
+    - export DISPLAY=:99
+
+    # Download and configure ChromeDriver
+    - |
+        if [ ! -f $CACHE_DIR/chromedriver ] || [ "$($CACHE_DIR/chromedriver --version | grep -c 2.34)" = "0" ]; then
+            curl http://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip > chromedriver.zip
+            unzip chromedriver.zip
+            chmod +x chromedriver
+            mv chromedriver $CACHE_DIR
+        fi
+
+    # Run ChromeDriver
+    - $CACHE_DIR/chromedriver > /dev/null 2>&1 &
+
+    # Download and configure Selenium
+    - |
+        if [ ! -f $CACHE_DIR/selenium.jar ] || [ "$(java -jar $CACHE_DIR/selenium.jar --version | grep -c 3.4.0)" = "0" ]; then
+            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
+            mv selenium.jar $CACHE_DIR
+        fi
+
+    # Run Selenium
+    - java -Dwebdriver.chrome.driver=$CACHE_DIR/chromedriver -jar $CACHE_DIR/selenium.jar > /dev/null 2>&1 &
+
+    # Run webserver
+    - (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web --env=test --quiet > /dev/null 2>&1 &)
 
 script:
-    - composer validate --strict --no-check-lock
-    # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
-    # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
-    - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
+    - composer validate --strict
+    - bin/phpstan.phar analyse -c phpstan.neon -l max src/
+
+    - bin/phpunit
+    - bin/phpspec run
+    - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun
+
+after_failure:
+    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${BUILD_DIR}/*.log"
