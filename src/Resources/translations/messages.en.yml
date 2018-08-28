@@ -1,0 +1,11 @@
+odiseo_blog:
+    ui:
+        articles: Articles
+        manage_articles: Manage articles
+        new_article: New article
+        edit_article: Edit article
+        there_are_no_articles_results: No article results
+    form:
+        report:
+            title: Title
+            description: Description

@@ -1,0 +1,8 @@
+parameters:
+services:
+    #FORM TYPES
+    odiseo_blog.form.type.article:
+        class: Odiseo\BlogBundle\Form\Type\ArticleType
+        arguments: ['%odiseo_blog.model.article.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article }

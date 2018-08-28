@@ -1,0 +1,15 @@
+odiseo_blog:
+    article:
+        code:
+            unique: Ya existe un artículo con este código.
+            not_blank: El código no puede ir vacío.
+            min_length: El código debe tener al menos {{ limit }} caracteres.
+            max_length: El código no puede tener más de {{ limit }} caracteres.
+        title:
+            not_blank: El título no puede ir vacío.
+            min_length: El título debe tener al menos {{ limit }} caracteres.
+            max_length: El título no puede tener más de {{ limit }} caracteres.
+        description:
+            not_blank: La descripción no puede ir vacía.
+            min_length: La descripción debe tener al menos {{ limit }} caracteres.
+            max_length: La descripción no puede tener más de {{ limit }} caracteres.

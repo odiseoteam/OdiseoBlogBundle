@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Odiseo\BlogBundle
+        psr4_prefix: Odiseo\BlogBundle

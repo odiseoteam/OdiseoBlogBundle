@@ -1,0 +1,35 @@
+Odiseo\BlogBundle\Model\Article:
+    type: mappedSuperclass
+    table: odiseo_blog_article
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+        description:
+            type: text
+        code:
+            type: string
+            unique: true
+        enabled:
+            type: bool
+        createdAt:
+            type: datetime
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+        archivedAt:
+            type: datetime
+            column: archived_at

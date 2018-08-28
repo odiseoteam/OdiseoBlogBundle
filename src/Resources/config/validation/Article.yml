@@ -1,0 +1,37 @@
+Odiseo\BlogBundle\Model\Article:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [code]
+            message: 'odiseo_blog.article.code.unique'
+            groups: ['odiseo']
+    properties:
+        code:
+            - NotBlank:
+                message: 'odiseo_blog.article.code.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_blog.article.code.min_length'
+                maxMessage: 'odiseo_blog.article.code.max_length'
+                groups: ['odiseo']
+        title:
+            - NotBlank:
+                message: 'odiseo_blog.article.title.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_blog.article.title.min_length'
+                maxMessage: 'odiseo_blog.article.title.max_length'
+                groups: ['odiseo']
+        description:
+            - NotBlank:
+                message: 'odiseo_blog.article.description.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 5000
+                minMessage: 'odiseo_blog.article.description.min_length'
+                maxMessage: 'odiseo_blog.article.description.max_length'
+                groups: ['odiseo']

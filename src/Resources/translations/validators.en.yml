@@ -1,0 +1,15 @@
+odiseo_blog:
+    article:
+        code:
+            unique: There is an existing article with this code.
+            not_blank: Code cannot be blank.
+            min_length: Code must be at least {{ limit }} characters long.
+            max_length: Code can not be longer than {{ limit }} characters.
+        title:
+            not_blank: Title cannot be blank.
+            min_length: Title must be at least {{ limit }} characters long.
+            max_length: Title can not be longer than {{ limit }} characters.
+        description:
+            not_blank: Description cannot be blank.
+            min_length: Description must be at least {{ limit }} characters long.
+            max_length: Description can not be longer than {{ limit }} characters.
