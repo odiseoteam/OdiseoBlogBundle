@@ -7,7 +7,10 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Sylius\Component\Registry\ServiceRegistryInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -39,8 +42,11 @@ final class ArticleTypeSpec extends ObjectBehavior
     ) {
         $builder->getFormFactory()->willReturn($factory);
 
-        $builder->add('title', TextType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
-        $builder->add('description', TextareaType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
+        /*$builder->add('title', TextType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
+        $builder->add('content', TextareaType::class, Argument::any())->shouldBeCalled()->willReturn($builder);*/
+        $builder->add('enabled', CheckboxType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
+        $builder->add('translations', ResourceTranslationsType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
+        $builder->add('categories', EntityType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
 
         $builder
             ->addEventSubscriber(Argument::type(AddCodeFormSubscriber::class))

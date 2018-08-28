@@ -4,7 +4,6 @@ namespace Odiseo\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Resource\Model\ArchivableTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -13,11 +12,10 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class Article implements ArticleInterface
+class ArticleCategory implements ArticleCategoryInterface
 {
     use TimestampableTrait;
     use ToggleableTrait;
-    use ArchivableTrait;
 
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
@@ -35,14 +33,14 @@ class Article implements ArticleInterface
     protected $code;
 
     /**
-     * @var Collection|ArticleCategoryInterface[]
+     * @var Collection|ArticleInterface[]
      */
-    protected $categories;
+    protected $articles;
 
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->categories = new ArrayCollection();
+        $this->articles = new ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->enabled = true;
     }
@@ -90,62 +88,37 @@ class Article implements ArticleInterface
     /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function addArticle(ArticleInterface $article)
     {
-        return $this->getTranslation()->getContent();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMetaKeywords()
-    {
-        return $this->getTranslation()->getMetaKeywords();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMetaDescription()
-    {
-        return $this->getTranslation()->getMetaDescription();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addCategory(ArticleCategoryInterface $category)
-    {
-        if (!$this->hasCategory($category)) {
-            $category->addArticle($this);
-            $this->categories->add($category);
+        if (!$this->hasArticle($article)) {
+            $this->articles->add($article);
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeCategory(ArticleCategoryInterface $category)
+    public function removeArticle(ArticleInterface $article)
     {
-        if ($this->hasCategory($category)) {
-            $this->categories->removeElement($category);
+        if ($this->hasArticle($article)) {
+            $this->articles->removeElement($article);
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasCategory(ArticleCategoryInterface $category)
+    public function hasArticle(ArticleInterface $article)
     {
-        return $this->categories->contains($category);
+        return $this->articles->contains($article);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCategories()
+    public function getArticles()
     {
-        return $this->categories;
+        return $this->articles;
     }
 
     /**
@@ -165,5 +138,10 @@ class Article implements ArticleInterface
     protected function createTranslation(): ArticleTranslation
     {
         return new ArticleTranslation();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

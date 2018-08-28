@@ -2,8 +2,8 @@
 
 namespace spec\Odiseo\BlogBundle\Model;
 
-use Odiseo\BlogBundle\Model\Article;
-use Odiseo\BlogBundle\Model\ArticleInterface;
+use Odiseo\BlogBundle\Model\ArticleCategory;
+use Odiseo\BlogBundle\Model\ArticleCategoryInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -13,16 +13,16 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class ArticleSpec extends ObjectBehavior
+class ArticleCategorySpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Article::class);
+        $this->shouldHaveType(ArticleCategory::class);
     }
 
-    function it_implements_article_interface(): void
+    function it_implements_article_category_interface(): void
     {
-        $this->shouldImplement(ArticleInterface::class);
+        $this->shouldImplement(ArticleCategoryInterface::class);
     }
 
     function it_implements_resource_interface(): void

@@ -1,11 +1,23 @@
 odiseo_blog:
     ui:
         articles: Articles
-        manage_articles: Manage articles
         new_article: New article
         edit_article: Edit article
-        there_are_no_articles_results: No article results
+        article_categories: Article categories
+        new_article_category: New article category
+        edit_article_category: Edit article category
     form:
-        report:
+        article:
+            code: Code
+            slug: Slug
             title: Title
-            description: Description
+            content: Content
+            metaKeywords: Meta Keywords
+            metaDescription: Meta Description
+            categories: Categories
+            enabled: Enabled?
+        article_category:
+            code: Code
+            slug: Slug
+            title: Title
+            enabled: Enabled?

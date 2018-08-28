@@ -2,18 +2,16 @@
 
 namespace Odiseo\BlogBundle\Form\Type;
 
-use Odiseo\BlogBundle\Model\ArticleCategory;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class ArticleType extends AbstractResourceType
+class ArticleCategoryType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -22,21 +20,15 @@ class ArticleType extends AbstractResourceType
     {
         $builder
             ->addEventSubscriber(new AddCodeFormSubscriber(null, [
-                'label' => 'odiseo_blog.form.article.code',
+                'label' => 'odiseo_blog.form.article_category.code',
             ]))
             ->add('enabled', CheckboxType::class, [
-                'label' => 'odiseo_blog.form.article.enabled',
+                'label' => 'odiseo_blog.form.article_category.enabled',
                 'required' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'entry_type' => ArticleTranslationType::class,
-                'label'    => 'odiseo_blog.form.article.translations',
-            ])
-            ->add('categories', EntityType::class, [
-                'class' => ArticleCategory::class,
-                'multiple' => true,
-                'expanded' => true,
-                'label'    => 'odiseo_blog.form.article.categories',
+                'entry_type' => ArticleCategoryTranslationType::class,
+                'label'    => 'odiseo_blog.form.article_category.translations',
             ])
         ;
     }
@@ -46,6 +38,6 @@ class ArticleType extends AbstractResourceType
      */
     public function getBlockPrefix()
     {
-        return 'odiseo_blog_article';
+        return 'odiseo_blog_article_category';
     }
 }

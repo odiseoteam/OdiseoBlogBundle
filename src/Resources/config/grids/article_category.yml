@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        odiseo_blog_article:
+        odiseo_blog_article_category:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%odiseo_blog.model.article.class%"
+                    class: "%odiseo_blog.model.article_category.class%"
             sorting:
                 id: asc
             fields:

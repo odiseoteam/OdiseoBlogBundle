@@ -1,6 +1,6 @@
-## Test the plugin
+## Test the bundle
 
-We are using Behat, PHPSpec and PHPUnit to test this plugin.
+We are using Behat, PHPSpec and PHPUnit to test this bundle.
 
 ### How to run the tests
 
@@ -55,7 +55,7 @@ From the plugin root directory, run the following commands:
     $ bin/behat --tags="@javascript"
     ```
 
-### Opening Sylius with this plugin
+### Opening Symfony with this bundle
 
   - Using `test` environment:
 

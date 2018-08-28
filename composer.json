@@ -6,9 +6,11 @@
     "require": {
         "php": "^7.1",
 
+        "friendsofsymfony/ckeditor-bundle": "^1.1",
         "sylius/resource-bundle": "~1.2.0",
         "sylius/grid-bundle": "~1.2.0",
-        "symfony/framework-bundle": "^3.4|^4.1"
+        "symfony/framework-bundle": "^3.4|^4.1",
+        "symfony/orm-pack": "^1.0"
     },
     "require-dev": {
         "behat/behat": "^3.4",

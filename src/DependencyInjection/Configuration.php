@@ -4,9 +4,24 @@ declare(strict_types=1);
 
 namespace Odiseo\BlogBundle\DependencyInjection;
 
+use Odiseo\BlogBundle\Doctrine\ORM\ArticleCategoryRepository;
+use Odiseo\BlogBundle\Doctrine\ORM\ArticleRepository;
+use Odiseo\BlogBundle\Form\Type\ArticleCategoryTranslationType;
+use Odiseo\BlogBundle\Form\Type\ArticleCategoryType;
+use Odiseo\BlogBundle\Form\Type\ArticleTranslationType;
+use Odiseo\BlogBundle\Form\Type\ArticleType;
+use Odiseo\BlogBundle\Model\Article;
+use Odiseo\BlogBundle\Model\ArticleCategory;
+use Odiseo\BlogBundle\Model\ArticleCategoryInterface;
+use Odiseo\BlogBundle\Model\ArticleCategoryTranslation;
+use Odiseo\BlogBundle\Model\ArticleCategoryTranslationInterface;
+use Odiseo\BlogBundle\Model\ArticleInterface;
+use Odiseo\BlogBundle\Model\ArticleTranslation;
+use Odiseo\BlogBundle\Model\ArticleTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
+use Sylius\Component\Resource\Factory\TranslatableFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -62,8 +77,59 @@ final class Configuration implements ConfigurationInterface
                                         ->scalarNode('interface')->defaultValue(ArticleInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(ArticleRepository::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                        ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
                                         ->scalarNode('form')->defaultValue(ArticleType::class)->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                                ->arrayNode('translation')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->variableNode('options')->end()
+                                        ->arrayNode('classes')
+                                            ->addDefaultsIfNotSet()
+                                            ->children()
+                                                ->scalarNode('model')->defaultValue(ArticleTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(ArticleTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('repository')->cannotBeEmpty()->end()
+                                                ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                                ->scalarNode('form')->defaultValue(ArticleTranslationType::class)->cannotBeEmpty()->end()
+                                            ->end()
+                                        ->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('article_category')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('model')->defaultValue(ArticleCategory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(ArticleCategoryInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->defaultValue(ArticleCategoryRepository::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
+                                        ->scalarNode('form')->defaultValue(ArticleCategoryType::class)->cannotBeEmpty()->end()
+                                    ->end()
+                                ->end()
+                                ->arrayNode('translation')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->variableNode('options')->end()
+                                        ->arrayNode('classes')
+                                            ->addDefaultsIfNotSet()
+                                            ->children()
+                                                ->scalarNode('model')->defaultValue(ArticleCategoryTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(ArticleCategoryTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('repository')->cannotBeEmpty()->end()
+                                                ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                                ->scalarNode('form')->defaultValue(ArticleCategoryTranslationType::class)->cannotBeEmpty()->end()
+                                            ->end()
+                                        ->end()
                                     ->end()
                                 ->end()
                             ->end()

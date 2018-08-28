@@ -31,6 +31,8 @@ This Bundle add blog capabilities to your Symfony project. It is admin agnostic,
 With this bundle you will get some models to manage a blog on your proyect. Also it comes with a Sylius Resource and Sylius
 Grid integrations.
 
+Also this bundle uses the [FOSCKEditorBundle](https://symfony.com/doc/current/bundles/FOSCKEditorBundle/installation.html). Follow the official instructions to install it properly.
+
 ## Installation
 
 1. Run `composer require odiseoteam/blog-bundle`.
@@ -65,9 +67,9 @@ public function registerBundles(): array
 php bin/console doctrine:schema:update --force
 ```
 
-## Test the plugin
+## Test the bundle
 
-You can follow the instructions to test this plugins in the proper documentation page: [Test the plugin](doc/tests.md).
+You can follow the instructions to test this bundle in the proper documentation page: [Test the bundle](doc/tests.md).
     
 ## Credits
 

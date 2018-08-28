@@ -1,0 +1,27 @@
+Odiseo\BlogBundle\Model\ArticleCategoryTranslation:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [slug]
+            message: 'odiseo_blog.article_category.slug.unique'
+            groups: ['odiseo']
+    properties:
+        slug:
+            - NotBlank:
+                message: 'odiseo_blog.article_category.slug.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 50
+                minMessage: 'odiseo_blog.article_category.slug.min_length'
+                maxMessage: 'odiseo_blog.article_category.slug.max_length'
+                groups: ['odiseo']
+        title:
+            - NotBlank:
+                message: 'odiseo_blog.article_category.title.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_blog.article_category.title.min_length'
+                maxMessage: 'odiseo_blog.article_category.title.max_length'
+                groups: ['odiseo']

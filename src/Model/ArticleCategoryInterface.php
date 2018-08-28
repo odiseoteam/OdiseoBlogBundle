@@ -3,7 +3,6 @@
 namespace Odiseo\BlogBundle\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Resource\Model\ArchivableInterface;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
@@ -14,12 +13,11 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-interface ArticleInterface extends
+interface ArticleCategoryInterface extends
     ResourceInterface,
     CodeAwareInterface,
     TimestampableInterface,
     ToggleableInterface,
-    ArchivableInterface,
     TranslatableInterface
 {
     /**
@@ -33,44 +31,29 @@ interface ArticleInterface extends
     public function getTitle();
 
     /**
-     * @param string
+     * @param ArticleInterface $article
      */
-    public function getContent();
+    public function addArticle(ArticleInterface $article);
 
     /**
-     * @return string
+     * @param ArticleInterface $article
      */
-    public function getMetaKeywords();
+    public function removeArticle(ArticleInterface $article);
 
     /**
-     * @return string
+     * @param ArticleInterface $article
      */
-    public function getMetaDescription();
+    public function hasArticle(ArticleInterface $article);
 
     /**
-     * @param ArticleCategoryInterface $category
+     * @return Collection|ArticleInterface
      */
-    public function addCategory(ArticleCategoryInterface $category);
-
-    /**
-     * @param ArticleCategoryInterface $category
-     */
-    public function removeCategory(ArticleCategoryInterface $category);
-
-    /**
-     * @param ArticleCategoryInterface $category
-     */
-    public function hasCategory(ArticleCategoryInterface $category);
-
-    /**
-     * @return Collection|ArticleCategoryInterface
-     */
-    public function getCategories();
+    public function getArticles();
 
     /**
      * @param string|null $locale
      *
-     * @return ArticleTranslationInterface
+     * @return ArticleCategoryTranslationInterface
      */
     public function getTranslation(?string $locale = null): TranslationInterface;
 }

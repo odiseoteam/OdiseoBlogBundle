@@ -1,6 +1,6 @@
-Odiseo\BlogBundle\Model\Article:
+Odiseo\BlogBundle\Model\ArticleCategory:
     type: mappedSuperclass
-    table: odiseo_blog_article
+    table: odiseo_blog_article_category
     id:
         id:
             type: integer
@@ -26,19 +26,7 @@ Odiseo\BlogBundle\Model\Article:
             gedmo:
                 timestampable:
                     on: update
-        archivedAt:
-            type: datetime
-            column: archived_at
-            nullable: true
     manyToMany:
-        categories:
-            targetEntity: Odiseo\BlogBundle\Model\ArticleCategoryInterface
-            inversedBy: articles
-            joinTable:
-                name: odiseo_blog_articles_categories
-                joinColumns:
-                    article_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    category_id:
-                        referencedColumnName: id
+        articles:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleInterface
+            mappedBy: categories

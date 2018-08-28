@@ -6,3 +6,21 @@ services:
         arguments: ['%odiseo_blog.model.article.class%', ['odiseo']]
         tags:
             - { name: form.type, alias: odiseo_blog_article }
+
+    odiseo_blog.form.type.article_translation:
+        class: Odiseo\BlogBundle\Form\Type\ArticleTranslationType
+        arguments: ['%odiseo_blog.model.article_translation.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_translation }
+
+    odiseo_blog.form.type.article_category:
+        class: Odiseo\BlogBundle\Form\Type\ArticleCategoryType
+        arguments: ['%odiseo_blog.model.article_category.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_category }
+
+    odiseo_blog.form.type.article_category_translation:
+        class: Odiseo\BlogBundle\Form\Type\ArticleCategoryTranslationType
+        arguments: ['%odiseo_blog.model.article_category_translation.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_category_translation }

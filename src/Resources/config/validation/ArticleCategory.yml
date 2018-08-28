@@ -1,19 +1,19 @@
-Odiseo\BlogBundle\Model\Article:
+Odiseo\BlogBundle\Model\ArticleCategory:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]
-            message: 'odiseo_blog.article.code.unique'
+            message: 'odiseo_blog.article_category.code.unique'
             groups: ['odiseo']
     properties:
         code:
             - NotBlank:
-                message: 'odiseo_blog.article.code.not_blank'
+                message: 'odiseo_blog.article_category.code.not_blank'
                 groups: ['odiseo']
             - Length:
                 min: 2
                 max: 250
-                minMessage: 'odiseo_blog.article.code.min_length'
-                maxMessage: 'odiseo_blog.article.code.max_length'
+                minMessage: 'odiseo_blog.article_category.code.min_length'
+                maxMessage: 'odiseo_blog.article_category.code.max_length'
                 groups: ['odiseo']
         translations:
             - Valid: ~

@@ -1,0 +1,18 @@
+Odiseo\BlogBundle\Model\ArticleCategoryTranslation:
+    type: mappedSuperclass
+    table: odiseo_blog_article_category_translation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        slug:
+            type: string
+            gedmo:
+                slug:
+                    fields: [title]
+                    uniqueBase: locale
+        title:
+            type: string
