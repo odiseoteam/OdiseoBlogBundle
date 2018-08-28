@@ -8,7 +8,7 @@
 
         "sylius/resource-bundle": "~1.2.0",
         "sylius/grid-bundle": "~1.2.0",
-        "symfony/symfony": "^3.4|^4.1"
+        "symfony/framework-bundle": "^3.4|^4.1"
     },
     "require-dev": {
         "behat/behat": "^3.4",
