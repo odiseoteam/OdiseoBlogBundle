@@ -28,7 +28,7 @@ class ArticleCategory implements ArticleCategoryInterface
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $code;
 
@@ -126,7 +126,7 @@ class ArticleCategory implements ArticleCategoryInterface
      */
     public function getTranslation(?string $locale = null): TranslationInterface
     {
-        /** @var ArticleTranslation $translation */
+        /** @var ArticleCategoryTranslationInterface $translation */
         $translation = $this->doGetTranslation($locale);
 
         return $translation;

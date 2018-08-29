@@ -33,7 +33,7 @@ interface ArticleInterface extends
     public function getTitle();
 
     /**
-     * @param string
+     * @return string
      */
     public function getContent();
 
