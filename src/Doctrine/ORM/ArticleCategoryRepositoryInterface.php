@@ -12,7 +12,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface ArticleCategoryRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @return Collection|ArticleCategoryInterface[]
+     * @return array|ArticleCategoryInterface[]
      */
-    public function findEnabled(): Collection;
+    public function findEnabled(): array;
 }

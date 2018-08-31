@@ -10,4 +10,5 @@ Odiseo\BlogBundle\Model\Image:
         type:
             type: string
             nullable: true
-        path: ~
+        path:
+            type: string

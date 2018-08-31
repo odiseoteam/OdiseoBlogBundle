@@ -13,7 +13,7 @@ class ArticleCategoryRepository extends EntityRepository implements ArticleCateg
     /**
      * @inheritdoc
      */
-    public function findEnabled(): Collection
+    public function findEnabled(): array
     {
         return $this->createQueryBuilder('o')
             ->addSelect('translation')
