@@ -1,0 +1,13 @@
+Odiseo\BlogBundle\Model\Image:
+    type: mappedSuperclass
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            nullable: true
+        path: ~

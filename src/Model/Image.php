@@ -7,6 +7,11 @@ namespace Odiseo\BlogBundle\Model;
 abstract class Image implements ImageInterface
 {
     /**
+     * @var mixed
+     */
+    protected $id;
+
+    /**
      * @var string|null
      */
     protected $type;
@@ -25,6 +30,14 @@ abstract class Image implements ImageInterface
      * @var object|null
      */
     protected $owner;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * {@inheritdoc}
