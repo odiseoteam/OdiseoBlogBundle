@@ -24,6 +24,7 @@
         "friends-of-behat/service-container-extension": "^1.0",
         "friends-of-behat/symfony-extension": "^1.2.1",
         "friends-of-behat/variadic-extension": "^1.1",
+        "knplabs/knp-gaufrette-bundle": "^0.5",
         "lakion/mink-debug-extension": "^1.2.3",
         "phpspec/phpspec": "^4.0",
         "phpstan/phpstan-doctrine": "^0.10",

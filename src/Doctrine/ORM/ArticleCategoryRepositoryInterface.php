@@ -2,6 +2,8 @@
 
 namespace Odiseo\BlogBundle\Doctrine\ORM;
 
+use Doctrine\Common\Collections\Collection;
+use Odiseo\BlogBundle\Model\ArticleCategoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
@@ -9,4 +11,8 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
  */
 interface ArticleCategoryRepositoryInterface extends RepositoryInterface
 {
+    /**
+     * @return Collection|ArticleCategoryInterface[]
+     */
+    public function findEnabled(): Collection;
 }

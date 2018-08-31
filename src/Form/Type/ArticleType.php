@@ -8,12 +8,13 @@ use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class ArticleType extends AbstractResourceType
+final class ArticleType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -37,6 +38,15 @@ class ArticleType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
                 'label'    => 'odiseo_blog.form.article.categories',
+            ])
+            ->add('images', CollectionType::class, [
+                'entry_type' => ArticleImageType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'label' => 'odiseo_blog.form.article.images',
+                'block_name' => 'entry',
+                'required' => false,
             ])
         ;
     }

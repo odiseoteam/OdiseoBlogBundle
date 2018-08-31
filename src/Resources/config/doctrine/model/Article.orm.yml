@@ -42,3 +42,8 @@ Odiseo\BlogBundle\Model\Article:
                 inverseJoinColumns:
                     category_id:
                         referencedColumnName: id
+    oneToMany:
+        images:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleImageInterface
+            mappedBy: owner
+            cascade: [ALL]

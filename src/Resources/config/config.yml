@@ -1,2 +1,12 @@
 imports:
     - { resource: "grids/*" }
+
+knp_gaufrette:
+    adapters:
+        odiseo_blog_image:
+            local:
+                directory: "%kernel.project_dir%/web/media/blog"
+                create: true
+    filesystems:
+        odiseo_blog_image:
+            adapter: odiseo_blog_image

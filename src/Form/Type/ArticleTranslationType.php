@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class ArticleTranslationType extends AbstractResourceType
+final class ArticleTranslationType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}

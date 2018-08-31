@@ -33,3 +33,6 @@ odiseo_blog:
             not_blank: Title cannot be blank.
             min_length: Title must be at least {{ limit }} characters long.
             max_length: Title can not be longer than {{ limit }} characters.
+    article_image:
+        path:
+            not_blank: Path cannot be blank.

@@ -2,7 +2,7 @@
 
 namespace spec\Odiseo\BlogBundle\Form\Type;
 
-use Odiseo\BlogBundle\Model\Article;
+use Odiseo\BlogBundle\Model\ArticleCategory;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
@@ -11,25 +11,22 @@ use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-final class ArticleTypeSpec extends ObjectBehavior
+final class ArticleCategoryTypeSpec extends ObjectBehavior
 {
     function let(ServiceRegistryInterface $rendererRegistry, ServiceRegistryInterface $dataFetcherRegistry)
     {
-        $this->beConstructedWith(Article::class, ['odiseo'], $rendererRegistry, $dataFetcherRegistry);
+        $this->beConstructedWith(ArticleCategory::class, ['odiseo'], $rendererRegistry, $dataFetcherRegistry);
     }
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Odiseo\BlogBundle\Form\Type\ArticleType');
+        $this->shouldHaveType('Odiseo\BlogBundle\Form\Type\ArticleCategoryType');
     }
 
     function it_should_be_abstract_resource_type_object()
@@ -45,8 +42,6 @@ final class ArticleTypeSpec extends ObjectBehavior
 
         $builder->add('enabled', CheckboxType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
         $builder->add('translations', ResourceTranslationsType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
-        $builder->add('categories', EntityType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
-        $builder->add('images', CollectionType::class, Argument::any())->shouldBeCalled()->willReturn($builder);
 
         $builder
             ->addEventSubscriber(Argument::type(AddCodeFormSubscriber::class))
@@ -59,6 +54,6 @@ final class ArticleTypeSpec extends ObjectBehavior
 
     function it_has_block_prefix()
     {
-        $this->getBlockPrefix()->shouldReturn('odiseo_blog_article');
+        $this->getBlockPrefix()->shouldReturn('odiseo_blog_article_category');
     }
 }

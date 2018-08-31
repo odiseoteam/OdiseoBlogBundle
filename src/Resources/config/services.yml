@@ -1,6 +1,15 @@
 parameters:
 services:
-    #FORM TYPES
+    odiseo_blog.gaufrette:
+        class: Gaufrette\Filesystem
+        arguments: ["odiseo_blog_image"]
+        factory: 'knp_gaufrette.filesystem_map:get'
+
+    odiseo_blog.image_uploader:
+        class: Odiseo\BlogBundle\Uploader\ImageUploader
+        arguments: ["@odiseo_blog.gaufrette"]
+        
+    # FORM TYPES
     odiseo_blog.form.type.article:
         class: Odiseo\BlogBundle\Form\Type\ArticleType
         arguments: ['%odiseo_blog.model.article.class%', ['odiseo']]
@@ -24,3 +33,18 @@ services:
         arguments: ['%odiseo_blog.model.article_category_translation.class%', ['odiseo']]
         tags:
             - { name: form.type, alias: odiseo_blog_article_category_translation }
+
+    odiseo_blog.form.type.article_image:
+        class: Odiseo\BlogBundle\Form\Type\ArticleImageType
+        arguments: ['%odiseo_blog.model.article_image.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_image }
+
+    # LISTENERS
+    odiseo_blog.listener.article_image_upload:
+        class: Odiseo\BlogBundle\EventListener\ArticleImageUploadListener
+        arguments:
+            - "@odiseo_blog.image_uploader"
+        tags:
+            - { name: kernel.event_listener, event: odiseo_blog.article.pre_create, method: uploadImages }
+            - { name: kernel.event_listener, event: odiseo_blog.article.pre_update, method: uploadImages }

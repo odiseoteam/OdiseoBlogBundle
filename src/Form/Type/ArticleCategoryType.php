@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Diego D'amico <diego@odiseo.com.ar>
  */
-class ArticleCategoryType extends AbstractResourceType
+final class ArticleCategoryType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}

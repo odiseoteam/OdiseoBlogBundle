@@ -16,8 +16,11 @@ odiseo_blog:
             metaDescription: Meta Description
             categories: Categorias
             enabled: Habilitado?
+            translations: Traducciones
+            images: Imágenes
         article_category:
             code: Código
             slug: Slug
             title: Título
             enabled: Habilitado?
+            translations: Traducciones

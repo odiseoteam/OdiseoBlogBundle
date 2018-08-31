@@ -33,3 +33,6 @@ odiseo_blog:
             not_blank: El título no puede ir vacío.
             min_length: El título debe tener al menos {{ limit }} caracteres.
             max_length: El título no puede tener más de {{ limit }} caracteres.
+    article_image:
+        path:
+            not_blank: La ruta no puede ir vacía.

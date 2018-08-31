@@ -1,0 +1,11 @@
+Odiseo\BlogBundle\Model\ArticleImage:
+    type: mappedSuperclass
+    table: odiseo_blog_article_image
+    manyToOne:
+        owner:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleInterface
+            inversedBy: images
+            cascade: [ALL]
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id

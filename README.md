@@ -37,7 +37,8 @@ Also this bundle uses the [FOSCKEditorBundle](https://symfony.com/doc/current/bu
 
 1. Run `composer require odiseoteam/blog-bundle`.
 
-2. Add the plugin to the AppKernel but add it before SyliusResourceBundle. To do that you need change the registerBundles like this:
+2. Add the plugin to the AppKernel but add it before SyliusResourceBundle. To do that you need change the registerBundles. This bundle
+uses the FOSCKEditorBundle so you need add it to the kernel too.
 
 ```php
 public function registerBundles(): array
@@ -48,6 +49,7 @@ public function registerBundles(): array
 
     $bundles = [
         new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+        new \FOS\CKEditorBundle\FOSCKEditorBundle(),
         ...
     ];
 

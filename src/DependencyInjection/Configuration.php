@@ -10,11 +10,14 @@ use Odiseo\BlogBundle\Form\Type\ArticleCategoryTranslationType;
 use Odiseo\BlogBundle\Form\Type\ArticleCategoryType;
 use Odiseo\BlogBundle\Form\Type\ArticleTranslationType;
 use Odiseo\BlogBundle\Form\Type\ArticleType;
+use Odiseo\BlogBundle\Form\Type\ArticleImageType;
 use Odiseo\BlogBundle\Model\Article;
 use Odiseo\BlogBundle\Model\ArticleCategory;
 use Odiseo\BlogBundle\Model\ArticleCategoryInterface;
 use Odiseo\BlogBundle\Model\ArticleCategoryTranslation;
 use Odiseo\BlogBundle\Model\ArticleCategoryTranslationInterface;
+use Odiseo\BlogBundle\Model\ArticleImage;
+use Odiseo\BlogBundle\Model\ArticleImageInterface;
 use Odiseo\BlogBundle\Model\ArticleInterface;
 use Odiseo\BlogBundle\Model\ArticleTranslation;
 use Odiseo\BlogBundle\Model\ArticleTranslationInterface;
@@ -130,6 +133,23 @@ final class Configuration implements ConfigurationInterface
                                                 ->scalarNode('form')->defaultValue(ArticleCategoryTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('article_image')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('model')->defaultValue(ArticleImage::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(ArticleImageInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                        ->scalarNode('form')->defaultValue(ArticleImageType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()

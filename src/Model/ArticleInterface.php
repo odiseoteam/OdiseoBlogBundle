@@ -20,7 +20,8 @@ interface ArticleInterface extends
     TimestampableInterface,
     ToggleableInterface,
     ArchivableInterface,
-    TranslatableInterface
+    TranslatableInterface,
+    ImagesAwareInterface
 {
     /**
      * @return string

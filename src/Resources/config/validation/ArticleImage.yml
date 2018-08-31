@@ -1,0 +1,6 @@
+Odiseo\BlogBundle\Model\ArticleImage:
+    properties:
+        path:
+            - NotBlank:
+                message: 'odiseo_blog.article_image.path.not_blank'
+                groups: ['odiseo']

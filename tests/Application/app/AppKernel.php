@@ -30,6 +30,7 @@ final class AppKernel extends Kernel
             new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
+            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
