@@ -135,9 +135,9 @@ class ArticleCategory implements ArticleCategoryInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation(): ArticleTranslation
+    protected function createTranslation(): ArticleCategoryTranslation
     {
-        return new ArticleTranslation();
+        return new ArticleCategoryTranslation();
     }
 
     public function __toString()

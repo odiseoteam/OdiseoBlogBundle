@@ -38,6 +38,7 @@ final class ArticleType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
                 'label'    => 'odiseo_blog.form.article.categories',
+                'required' => false,
             ])
             ->add('images', CollectionType::class, [
                 'entry_type' => ArticleImageType::class,
