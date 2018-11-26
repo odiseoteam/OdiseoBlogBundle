@@ -142,6 +142,6 @@ class ArticleCategory implements ArticleCategoryInterface
 
     public function __toString()
     {
-        return $this->getTitle();
+        return empty($this->getId) ? '' : $this->getTitle();
     }
 }
