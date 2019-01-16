@@ -5,7 +5,7 @@ knp_gaufrette:
     adapters:
         odiseo_blog_image:
             local:
-                directory: "%kernel.project_dir%/web/media/image"
+                directory: "%kernel.project_dir%/public/media/image"
                 create: true
     filesystems:
         odiseo_blog_image:
