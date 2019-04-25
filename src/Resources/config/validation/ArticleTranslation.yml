@@ -31,7 +31,6 @@ Odiseo\BlogBundle\Model\ArticleTranslation:
                 groups: ['odiseo']
             - Length:
                 min: 2
-                max: 5000
                 minMessage: 'odiseo_blog.article.content.min_length'
                 maxMessage: 'odiseo_blog.article.content.max_length'
                 groups: ['odiseo']
