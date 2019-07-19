@@ -47,3 +47,6 @@ Odiseo\BlogBundle\Model\Article:
             targetEntity: Odiseo\BlogBundle\Model\ArticleImageInterface
             mappedBy: owner
             cascade: [ALL]
+        comments:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
+            mappedBy: article

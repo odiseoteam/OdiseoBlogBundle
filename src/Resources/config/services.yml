@@ -8,7 +8,7 @@ services:
     odiseo_blog.image_uploader:
         class: Odiseo\BlogBundle\Uploader\ImageUploader
         arguments: ["@odiseo_blog.gaufrette"]
-        
+
     # FORM TYPES
     odiseo_blog.form.type.article:
         class: Odiseo\BlogBundle\Form\Type\ArticleType
@@ -33,6 +33,18 @@ services:
         arguments: ['%odiseo_blog.model.article_category_translation.class%', ['odiseo']]
         tags:
             - { name: form.type, alias: odiseo_blog_article_category_translation }
+
+    odiseo_blog.form.type.article_comment:
+        class: Odiseo\BlogBundle\Form\Type\ArticleCommentType
+        arguments: ['%odiseo_blog.model.article_comment.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_comment }
+
+    odiseo_blog.form.type.article_user_comment:
+        class: Odiseo\BlogBundle\Form\Type\ArticleUserCommentType
+        arguments: ['%odiseo_blog.model.article_comment.class%', ['odiseo']]
+        tags:
+            - { name: form.type, alias: odiseo_blog_article_user_comment }
 
     odiseo_blog.form.type.article_image:
         class: Odiseo\BlogBundle\Form\Type\ArticleImageType

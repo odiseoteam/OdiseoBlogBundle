@@ -2,6 +2,7 @@
 
 namespace Odiseo\BlogBundle\Model;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ArchivableTrait;
@@ -24,32 +25,28 @@ class Article implements ArticleInterface
         getTranslation as private doGetTranslation;
     }
 
-    /**
-     * @var mixed
-     */
+    /** @var mixed */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     protected $code;
 
-    /**
-     * @var Collection|ArticleCategoryInterface[]
-     */
+    /** @var Collection|ArticleCategoryInterface[] */
     protected $categories;
 
-    /**
-     * @var Collection|ImageInterface[]
-     */
+    /** @var Collection|ImageInterface[] */
     protected $images;
+
+    /** @var Collection|ArticleCommentInterface[] */
+    protected $comments;
 
     public function __construct()
     {
         $this->initializeTranslationsCollection();
         $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->createdAt = new \DateTime();
+        $this->comments = new ArrayCollection();
+        $this->createdAt = new DateTime();
         $this->enabled = true;
     }
 
@@ -210,6 +207,61 @@ class Article implements ArticleInterface
 
     /**
      * {@inheritdoc}
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEnabledComments(): Collection
+    {
+        return $this->comments->filter(function(ArticleCommentInterface $comment) {
+            return $comment->isEnabled() && !$comment->getParent();
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setComments(Collection $comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasComment(ArticleCommentInterface $comment): bool
+    {
+        return $this->comments->contains($comment);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addComment(ArticleCommentInterface $comment): void
+    {
+        if (!$this->hasComment($comment)) {
+            $this->comments->add($comment);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeComment(ArticleCommentInterface $comment): void
+    {
+        if ($this->hasComment($comment)) {
+            $this->comments->removeElement($comment);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return ArticleTranslation
      */
     public function getTranslation(?string $locale = null): TranslationInterface
     {

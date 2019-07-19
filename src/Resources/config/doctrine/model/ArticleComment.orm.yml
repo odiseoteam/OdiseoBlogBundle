@@ -1,0 +1,51 @@
+Odiseo\BlogBundle\Model\ArticleComment:
+    type: mappedSuperclass
+    table: odiseo_blog_article_comment
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        comment:
+            type: text
+        name:
+            type: string
+            nullable: true
+        email:
+            type: string
+            nullable: true
+        enabled:
+            type: boolean
+        createdAt:
+            type: datetime
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+    manyToOne:
+        article:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleInterface
+            inversedBy: comments
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
+        parent:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
+            inversedBy: children
+            nullable: true
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+    oneToMany:
+        children:
+            targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
+            mappedBy: parent

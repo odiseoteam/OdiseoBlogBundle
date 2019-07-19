@@ -1,0 +1,33 @@
+sylius_grid:
+    grids:
+        odiseo_article_comment:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%odiseo_blog.model.article_comment.class%"
+            sorting:
+                id: asc
+            fields:
+                id:
+                    type: string
+                    sortable: ~
+                comment:
+                    type: string
+                    sortable: ~
+                enabled:
+                    type: string
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    sortable: ~
+            filters:
+                comment:
+                    type: string
+                enabled:
+                    type: choice
+            actions:
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

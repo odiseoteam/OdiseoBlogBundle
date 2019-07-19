@@ -68,6 +68,38 @@ interface ArticleInterface extends
      */
     public function getCategories();
 
+
+    /**
+     * @return Collection|ArticleCommentInterface[]
+     */
+    public function getComments(): Collection;
+
+    /**
+     * @return Collection|ArticleCommentInterface[]
+     */
+    public function getEnabledComments(): Collection;
+
+    /**
+     * @param Collection $comments
+     */
+    public function setComments(Collection $comments): void;
+
+    /**
+     * @param ArticleCommentInterface $comment
+     * @return bool
+     */
+    public function hasComment(ArticleCommentInterface $comment): bool;
+
+    /**
+     * @param ArticleCommentInterface $comment
+     */
+    public function addComment(ArticleCommentInterface $comment): void;
+
+    /**
+     * @param ArticleCommentInterface $comment
+     */
+    public function removeComment(ArticleCommentInterface $comment): void;
+
     /**
      * @param string|null $locale
      *

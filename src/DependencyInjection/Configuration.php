@@ -8,6 +8,7 @@ use Odiseo\BlogBundle\Doctrine\ORM\ArticleCategoryRepository;
 use Odiseo\BlogBundle\Doctrine\ORM\ArticleRepository;
 use Odiseo\BlogBundle\Form\Type\ArticleCategoryTranslationType;
 use Odiseo\BlogBundle\Form\Type\ArticleCategoryType;
+use Odiseo\BlogBundle\Form\Type\ArticleCommentType;
 use Odiseo\BlogBundle\Form\Type\ArticleTranslationType;
 use Odiseo\BlogBundle\Form\Type\ArticleType;
 use Odiseo\BlogBundle\Form\Type\ArticleImageType;
@@ -16,6 +17,8 @@ use Odiseo\BlogBundle\Model\ArticleCategory;
 use Odiseo\BlogBundle\Model\ArticleCategoryInterface;
 use Odiseo\BlogBundle\Model\ArticleCategoryTranslation;
 use Odiseo\BlogBundle\Model\ArticleCategoryTranslationInterface;
+use Odiseo\BlogBundle\Model\ArticleComment;
+use Odiseo\BlogBundle\Model\ArticleCommentInterface;
 use Odiseo\BlogBundle\Model\ArticleImage;
 use Odiseo\BlogBundle\Model\ArticleImageInterface;
 use Odiseo\BlogBundle\Model\ArticleInterface;
@@ -133,6 +136,23 @@ final class Configuration implements ConfigurationInterface
                                                 ->scalarNode('form')->defaultValue(ArticleCategoryTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('article_comment')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('model')->defaultValue(ArticleComment::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(ArticleCommentInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                        ->scalarNode('form')->defaultValue(ArticleCommentType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
