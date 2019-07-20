@@ -1,0 +1,12 @@
+Odiseo\BlogBundle\Model\ArticleComment:
+    properties:
+        comment:
+            - NotBlank:
+                message: 'odiseo_blog.article_category.code.not_blank'
+                groups: ['odiseo', 'odiseo_user_comment']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_blog.article_category.code.min_length'
+                maxMessage: 'odiseo_blog.article_category.code.max_length'
+                groups: ['odiseo', 'odiseo_user_comment']

@@ -6,7 +6,12 @@ odiseo_blog:
         article_categories: Categoría de artículos
         new_article_category: Nueva categoría de artículos
         edit_article_category: Editar categoría de artículos
+        article_comments: Comentarios de artículos
     form:
+        name: Nombre
+        email: Email
+        comment: Comentario
+        enabled: Habilitado?
         article:
             code: Código
             slug: Slug

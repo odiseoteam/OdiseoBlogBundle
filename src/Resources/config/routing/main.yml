@@ -1,0 +1,2 @@
+odiseo_blog_comment:
+    resource: "@OdiseoBlogBundle/Resources/config/routing/comment.yml"

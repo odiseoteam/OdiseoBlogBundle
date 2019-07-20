@@ -6,6 +6,7 @@ namespace Odiseo\BlogBundle\DependencyInjection;
 
 use Odiseo\BlogBundle\Doctrine\ORM\ArticleCategoryRepository;
 use Odiseo\BlogBundle\Doctrine\ORM\ArticleRepository;
+use Odiseo\BlogBundle\Factory\ArticleCommentFactory;
 use Odiseo\BlogBundle\Form\Type\ArticleCategoryTranslationType;
 use Odiseo\BlogBundle\Form\Type\ArticleCategoryType;
 use Odiseo\BlogBundle\Form\Type\ArticleCommentType;
@@ -151,7 +152,7 @@ final class Configuration implements ConfigurationInterface
                                         ->scalarNode('interface')->defaultValue(ArticleCommentInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                        ->scalarNode('factory')->defaultValue(ArticleCommentFactory::class)->end()
                                         ->scalarNode('form')->defaultValue(ArticleCommentType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()

@@ -62,11 +62,31 @@ public function registerBundles(): array
 ```yml
     - { resource: "@OdiseoBlogBundle/Resources/config/config.yml" }
 ```
+ 
+4. Import the routes:
+ 
+```yml    
+odiseo_blog:
+    prefix: /blog
+    resource: "@OdiseoBlogBundle/Resources/config/routing/main.yml"
+```
 
-6. Finish the installation updatating the database schema and installing assets:
+5. Finish the installation updatating the database schema and installing assets:
    
 ```
 php bin/console doctrine:schema:update --force
+```
+
+## Usage
+
+### Available routes
+
+##### Article comment create
+
+You can use this partial route to embed the comment form:
+
+```twig
+{{ render(url('odiseo_blog_partial_comment_create', {'slug': article.slug, 'tempalte': 'Main/Blog/_comment_create.html.twig'})) }}
 ```
 
 ## Test the bundle

@@ -9,6 +9,10 @@ services:
         class: Odiseo\BlogBundle\Uploader\ImageUploader
         arguments: ["@odiseo_blog.gaufrette"]
 
+    odiseo_blog.factory.article_comment:
+        class: Odiseo\BlogBundle\Factory\ArticleCommentFactory
+        arguments: ["%odiseo_blog.model.article_comment.class%", "@odiseo_blog.repository.article"]
+
     # FORM TYPES
     odiseo_blog.form.type.article:
         class: Odiseo\BlogBundle\Form\Type\ArticleType

@@ -1,6 +1,6 @@
 sylius_grid:
     grids:
-        odiseo_article_comment:
+        odiseo_blog_article_comment:
             driver:
                 name: doctrine/orm
                 options:
@@ -24,7 +24,7 @@ sylius_grid:
                 comment:
                     type: string
                 enabled:
-                    type: choice
+                    type: boolean
             actions:
                 item:
                     update:

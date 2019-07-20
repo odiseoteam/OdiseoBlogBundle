@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
-use Symfony\Component\Validator\Constraints;
 use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -27,23 +26,19 @@ final class ArticleUserCommentType extends AbstractResourceType
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
-                'constraints' => [
-                    new Constraints\Email()
-                ],
                 'label' => 'odiseo_blog.form.email',
             ])
             ->add('comment', TextareaType::class, [
                 'required' => true,
-                'constraints' => array(
-                    new Constraints\NotBlank()
-                ),
                 'label' => 'odiseo_blog.form.comment',
             ])
             ->add('recaptcha', EWZRecaptchaType::class, [
                 'mapped' => false,
-                'constraints' => array(
-                    new RecaptchaTrue()
-                )
+                'constraints' => [
+                    new RecaptchaTrue([
+                        'groups' => ['odiseo_user_comment']
+                    ])
+                ]
             ])
         ;
     }
