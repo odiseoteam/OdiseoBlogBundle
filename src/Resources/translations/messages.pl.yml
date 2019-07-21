@@ -1,0 +1,31 @@
+odiseo_blog:
+    ui:
+        articles: Artykuły
+        new_article: Nowy artykuł
+        edit_article: Edytuj artykuł
+        article_categories: Kategorie artykułów
+        new_article_category: Nowa kategoria artykułów
+        edit_article_category: Edytuj kategorię artykułów
+        article_comments: Komentarze do artykułu
+    form:
+        name: Imię
+        email: Email
+        comment: Comment
+        enabled: Aktywny?
+        article:
+            code: Kod
+            slug: Odnośnik
+            title: Tytuł
+            content: Zawartość
+            metaKeywords: Meta Słowa Kluczowe
+            metaDescription: Meta Opis
+            categories: Kategorie
+            enabled: Aktywny?
+            translations: Tłumaczenia
+            images: Obrazy
+        article_category:
+            code: Kod
+            slug: Odnośnik
+            title: Tytuł
+            enabled: Aktywny?
+            translations: Tłumaczenia

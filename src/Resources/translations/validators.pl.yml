@@ -1,0 +1,38 @@
+odiseo_blog:
+    article:
+        code:
+            unique: Istnieje już artykuł z takim kodem.
+            not_blank: Kod nie może być pusty.
+            min_length: Minimalna ilość znaków w kodzie to {{ limit }}.
+            max_length: Maksymalna ilość znaków w kodzie to {{ limit }}.
+        slug:
+            unique: Isnieje już artykuł z taką kombinacją odnośnika i tłumaczenia.
+            not_blank: Odnośnik nie może być pusty.
+            min_length: Minimalna ilość znaków w odnośniku to {{ limit }}.
+            max_length: Maksymalna ilość znaków w odnosniku to {{ limit }}.
+        title:
+            not_blank: Tytuł nie może być pusty.
+            min_length: Minimalna ilość znaków w tytule to {{ limit }}.
+            max_length: Maksymalna ilość znaków w tytule to {{ limit }}.
+        content:
+            not_blank: Treść nie może być pusta.
+            min_length: Minimalna ilość znaków w treści to {{ limit }}.
+            max_length: Maksymalna ilość znaków w treści to {{ limit }}.
+    article_category:
+        code:
+            unique: Istnieje już kategoria artykułów z takim kodem.
+            not_blank: Kod nie może być pusty.
+            min_length: Minimalna ilość znaków w kodzie to {{ limit }}.
+            max_length: Maksymalna ilość znaków w kodzie to {{ limit }}.
+        slug:
+            unique: Isnieje już kategoria artykułów z taką kombinacją odnośnika i tłumaczenia.
+            not_blank: Odnośnik nie może być pusty.
+            min_length: Minimalna ilość znaków w odnośniku to {{ limit }}.
+            max_length: Maksymalna ilość znaków w odnosniku to {{ limit }}.
+        title:
+            not_blank: Tytuł nie może być pusty.
+            min_length: Minimalna ilość znaków w tytule to {{ limit }}.
+            max_length: Maksymalna ilość znaków w tytule to {{ limit }}.
+    article_image:
+        path:
+            not_blank: Ścieżka nie może być pusta.
