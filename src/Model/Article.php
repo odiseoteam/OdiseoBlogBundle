@@ -245,6 +245,7 @@ class Article implements ArticleInterface
     public function addComment(ArticleCommentInterface $comment): void
     {
         if (!$this->hasComment($comment)) {
+            $comment->setArticle($this);
             $this->comments->add($comment);
         }
     }

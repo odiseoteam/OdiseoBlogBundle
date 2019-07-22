@@ -9,9 +9,10 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 interface ArticleCommentFactoryInterface extends FactoryInterface
 {
     /**
-     * @param string $id
+     * @param string $articleId
+     * @param string $commentId
      * @return ArticleCommentInterface
      * @throws Exception
      */
-    public function createNewWithArticle(string $id): ArticleCommentInterface;
+    public function createNewWithArticleOrComment(string $articleId, string $commentId): ArticleCommentInterface;
 }

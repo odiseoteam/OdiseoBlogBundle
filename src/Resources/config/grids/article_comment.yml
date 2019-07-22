@@ -6,7 +6,7 @@ sylius_grid:
                 options:
                     class: "%odiseo_blog.model.article_comment.class%"
             sorting:
-                id: asc
+                id: desc
             fields:
                 id:
                     type: string

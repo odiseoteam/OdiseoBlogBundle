@@ -7,6 +7,7 @@ odiseo_blog:
         new_article_category: Nueva categoría de artículos
         edit_article_category: Editar categoría de artículos
         article_comments: Comentarios de artículos
+        edit_article_comment: Editar comentario
     form:
         name: Nombre
         email: Email

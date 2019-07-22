@@ -11,8 +11,8 @@ odiseo_blog_partial_comment_create:
                 options:
                     validation_groups: [odiseo_user_comment]
             factory:
-                method: createNewWithArticle
-                arguments: [$articleId]
+                method: createNewWithArticleOrComment
+                arguments: [$articleId, $commentId]
             redirect:
                 route: $redirectRoute
                 parameters: $redirectParameters

@@ -6,6 +6,7 @@ use Exception;
 use Odiseo\BlogBundle\Doctrine\ORM\ArticleRepositoryInterface;
 use Odiseo\BlogBundle\Model\ArticleCommentInterface;
 use Odiseo\BlogBundle\Model\ArticleInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class ArticleCommentFactory implements ArticleCommentFactoryInterface
 {
@@ -15,10 +16,18 @@ final class ArticleCommentFactory implements ArticleCommentFactoryInterface
     /** @var ArticleRepositoryInterface */
     private $articleRepository;
 
-    public function __construct(string $className, ArticleRepositoryInterface $articleRepository)
+    /** @var RepositoryInterface */
+    private $articleCommentRepository;
+
+    public function __construct(
+        string $className,
+        ArticleRepositoryInterface $articleRepository,
+        RepositoryInterface $articleCommentRepository
+    )
     {
         $this->className = $className;
         $this->articleRepository = $articleRepository;
+        $this->articleCommentRepository = $articleCommentRepository;
     }
 
     /**
@@ -32,18 +41,27 @@ final class ArticleCommentFactory implements ArticleCommentFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNewWithArticle(string $id): ArticleCommentInterface
+    public function createNewWithArticleOrComment(string $articleId, string $commentId = null): ArticleCommentInterface
     {
-        /** @var ArticleInterface $article */
-        $article = $this->articleRepository->find($id);
-
-        if (!$article instanceof ArticleInterface) {
-            throw new Exception();
-        }
-
         /** @var ArticleCommentInterface $articleComment */
         $articleComment = $this->createNew();
-        $articleComment->setArticle($article);
+
+        if ($commentId) {
+            /** @var ArticleCommentInterface $comment */
+            $comment = $this->articleCommentRepository->find($commentId);
+            if ($comment) {
+                $articleComment->setParent($comment);
+            }
+        } else {
+            /** @var ArticleInterface $article */
+            $article = $this->articleRepository->find($articleId);
+
+            if (!$article instanceof ArticleInterface) {
+                throw new Exception();
+            }
+
+            $articleComment->setArticle($article);
+        }
 
         return $articleComment;
     }

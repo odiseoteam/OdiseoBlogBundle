@@ -149,6 +149,7 @@ class ArticleComment implements ArticleCommentInterface
     public function addChildren(ArticleCommentInterface $comment): void
     {
         if (!$this->hasChildren($comment)) {
+            $comment->setParent($this);
             $this->children->add($comment);
         }
     }
