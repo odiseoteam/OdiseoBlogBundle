@@ -49,7 +49,7 @@ final class ArticleCommentFactory implements ArticleCommentFactoryInterface
         if ($commentId) {
             /** @var ArticleCommentInterface $comment */
             $comment = $this->articleCommentRepository->find($commentId);
-            if ($comment) {
+            if (null !== $comment) {
                 $articleComment->setParent($comment);
             }
         } else {
