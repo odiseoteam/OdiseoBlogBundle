@@ -35,12 +35,14 @@ Odiseo\BlogBundle\Model\ArticleComment:
         article:
             targetEntity: Odiseo\BlogBundle\Model\ArticleInterface
             inversedBy: comments
+            cascade: [ALL]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
         parent:
             targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
             inversedBy: children
+            cascade: [ALL]
             nullable: true
             joinColumn:
                 name: parent_id
