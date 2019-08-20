@@ -1,7 +1,7 @@
 Odiseo\BlogBundle\Model\ArticleTranslation:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [slug]
+            fields: [slug, locale]
             message: 'odiseo_blog.article.slug.unique'
             groups: ['odiseo']
     properties:
