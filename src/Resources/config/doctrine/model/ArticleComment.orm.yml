@@ -39,6 +39,7 @@ Odiseo\BlogBundle\Model\ArticleComment:
             joinColumn:
                 name: article_id
                 referencedColumnName: id
+                onDelete: CASCADE
         parent:
             targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
             inversedBy: children
