@@ -1,0 +1,38 @@
+odiseo_blog:
+    article:
+        code:
+            unique: Un autre article utilise déjà ce code.
+            not_blank: Le code ne peut être vide.
+            min_length: Le code doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le code doit avoir une longueur maximale de {{ limit }} caractères.
+        slug:
+            unique: Un autre article utilise déjà cette combinaison slug-locale.
+            not_blank: Le slug ne peut être vide.
+            min_length: Le slug doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le slug doit avoir une longueur maximale de {{ limit }} caractères.
+        title:
+            not_blank: Le titre ne peut être vide.
+            min_length: Le titre doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le titre doit avoir une longueur maximale de {{ limit }} caractères.
+        content:
+            not_blank: Le contenu ne peut être vide.
+            min_length: Le contenu doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le contenu doit avoir une longueur maximale de {{ limit }} caractères.
+    article_category:
+        code:
+            unique: Une autre catégorie utilise déjà ce code.
+            not_blank: Le code ne peut être vide.
+            min_length: Le code doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le code doit avoir une longueur maximale de {{ limit }} caractères.
+        slug:
+            unique: Une autre catégorie utilise déjà cette combinaison slug-locale.
+            not_blank: Le slug ne peut être vide.
+            min_length: Le slug doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le slug doit avoir une longueur maximale de {{ limit }} caractères.
+        title:
+            not_blank: Le titre ne peut être vide.
+            min_length: Le titre doit avoir une longueur minimale de {{ limit }} caractères.
+            max_length: Le titre doit avoir une longueur maximale de {{ limit }} caractères.
+    article_image:
+        path:
+            not_blank: Le chemin ne peut être vide.
