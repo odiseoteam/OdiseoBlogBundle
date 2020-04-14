@@ -24,9 +24,19 @@ interface ArticleInterface extends
     ImagesAwareInterface
 {
     /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void;
+
+    /**
      * @return string
      */
     public function getSlug();
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void;
 
     /**
      * @return string
@@ -34,14 +44,29 @@ interface ArticleInterface extends
     public function getTitle();
 
     /**
+     * @param string $content
+     */
+    public function setContent(string $content): void;
+
+    /**
      * @return string
      */
     public function getContent();
 
     /**
+     * @param string $metaKeywords
+     */
+    public function setMetaKeywords(string $metaKeywords): void;
+
+    /**
      * @return string
      */
     public function getMetaKeywords();
+
+    /**
+     * @param string $metaDescription
+     */
+    public function setMetaDescription(string $metaDescription): void;
 
     /**
      * @return string

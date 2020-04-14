@@ -77,9 +77,31 @@ class Article implements ArticleInterface
     /**
      * {@inheritdoc}
      */
+    public function setSlug(string $slug): void
+    {
+        /** @var ArticleTranslationInterface $articleTranslation */
+        $articleTranslation = $this->getTranslation();
+
+        $articleTranslation->setSlug($slug);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getSlug()
     {
         return $this->getTranslation()->getSlug();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle(string $title): void
+    {
+        /** @var ArticleTranslationInterface $articleTranslation */
+        $articleTranslation = $this->getTranslation();
+
+        $articleTranslation->setTitle($title);
     }
 
     /**
@@ -93,6 +115,17 @@ class Article implements ArticleInterface
     /**
      * {@inheritdoc}
      */
+    public function setContent(string $content): void
+    {
+        /** @var ArticleTranslationInterface $articleTranslation */
+        $articleTranslation = $this->getTranslation();
+
+        $articleTranslation->setContent($content);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getContent()
     {
         return $this->getTranslation()->getContent();
@@ -101,9 +134,31 @@ class Article implements ArticleInterface
     /**
      * {@inheritdoc}
      */
+    public function setMetaKeywords(string $metaKeywords): void
+    {
+        /** @var ArticleTranslationInterface $articleTranslation */
+        $articleTranslation = $this->getTranslation();
+
+        $articleTranslation->setMetaKeywords($metaKeywords);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getMetaKeywords()
     {
         return $this->getTranslation()->getMetaKeywords();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaDescription(string $metaDescription): void
+    {
+        /** @var ArticleTranslationInterface $articleTranslation */
+        $articleTranslation = $this->getTranslation();
+
+        $articleTranslation->setMetaDescription($metaDescription);
     }
 
     /**

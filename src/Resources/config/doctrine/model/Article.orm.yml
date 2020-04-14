@@ -50,3 +50,4 @@ Odiseo\BlogBundle\Model\Article:
         comments:
             targetEntity: Odiseo\BlogBundle\Model\ArticleCommentInterface
             mappedBy: article
+            cascade: [ALL]

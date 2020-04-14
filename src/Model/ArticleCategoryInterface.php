@@ -21,9 +21,19 @@ interface ArticleCategoryInterface extends
     TranslatableInterface
 {
     /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void;
+
+    /**
      * @return string
      */
     public function getSlug();
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void;
 
     /**
      * @return string

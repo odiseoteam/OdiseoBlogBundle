@@ -72,9 +72,31 @@ class ArticleCategory implements ArticleCategoryInterface
     /**
      * {@inheritdoc}
      */
+    public function setSlug(string $slug): void
+    {
+        /** @var ArticleCategoryTranslationInterface $articleTranslation */
+        $articleCategoryTranslation = $this->getTranslation();
+
+        $articleCategoryTranslation->setSlug($slug);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getSlug()
     {
         return $this->getTranslation()->getSlug();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle(string $title): void
+    {
+        /** @var ArticleCategoryTranslationInterface $articleTranslation */
+        $articleCategoryTranslation = $this->getTranslation();
+
+        $articleCategoryTranslation->setTitle($title);
     }
 
     /**
