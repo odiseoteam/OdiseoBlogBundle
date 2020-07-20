@@ -35,7 +35,7 @@ Odiseo\BlogBundle\Model\ArticleComment:
         article:
             targetEntity: Odiseo\BlogBundle\Model\ArticleInterface
             inversedBy: comments
-            cascade: [ALL]
+            cascade: [persist]
             joinColumn:
                 name: article_id
                 referencedColumnName: id
