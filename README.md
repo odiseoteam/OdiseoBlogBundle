@@ -86,7 +86,7 @@ php bin/console doctrine:schema:update --force
 You can use this partial route to embed the comment form:
 
 ```twig
-{{ render(url('odiseo_blog_partial_comment_create', {'slug': article.slug, 'tempalte': 'Main/Blog/_comment_create.html.twig'})) }}
+{{ render(url('odiseo_blog_partial_comment_create', {'slug': article.slug, 'template': 'Main/Blog/_comment_create.html.twig'})) }}
 ```
 
 ## Test the bundle
