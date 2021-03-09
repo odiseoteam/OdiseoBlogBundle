@@ -10,11 +10,12 @@
         "friendsofsymfony/ckeditor-bundle": "^1.1|^2.1",
         "knplabs/knp-gaufrette-bundle": "^0.5|^0.7",
         "monolog/monolog": "~1.22",
-        "sylius/grid-bundle": "^1.6",
-        "sylius/resource-bundle": "^1.4",
-        "symfony/framework-bundle": "^4.4",
-        "symfony/monolog-bundle": "^3.0",
-        "symfony/orm-pack": "^1.0"
+        "sylius/grid-bundle": "^1.8",
+        "sylius/resource-bundle": "^1.7",
+        "symfony/framework-bundle": "^4.4 || ^5.2",
+        "symfony/monolog-bundle": "^3.5",
+        "symfony/orm-pack": "^1.0",
+        "symfony/templating": "^4.4 || ^5.2"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -29,13 +30,11 @@
         "friends-of-behat/variadic-extension": "^1.1",
         "lakion/mink-debug-extension": "^1.2.3",
         "phpspec/phpspec": "^6.0",
-        "phpstan/phpstan-doctrine": "^0.10",
-        "phpstan/phpstan-shim": "^0.10",
-        "phpstan/phpstan-symfony": "^0.10",
-        "phpstan/phpstan-webmozart-assert": "^0.10",
-        "phpunit/phpunit": "^6.5",
-        "sylius-labs/coding-standard": "^2.0",
-        "symfony/web-server-bundle": "^4.1"
+        "phpstan/phpstan": "0.12.70",
+        "phpstan/phpstan-doctrine": "0.12.30",
+        "phpunit/phpunit": "^8.5",
+        "sylius-labs/coding-standard": "^3.1",
+        "symfony/web-server-bundle": "^4.4 || ^5.2"
     },
     "prefer-stable": true,
     "autoload": {

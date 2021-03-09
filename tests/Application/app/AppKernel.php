@@ -23,7 +23,6 @@ final class AppKernel extends Kernel
             new \Symfony\Bundle\MonologBundle\MonologBundle(),
             new \Symfony\Bundle\WebServerBundle\WebServerBundle(), // allows to run build in web server. Not recommended for prod environment
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
@@ -33,7 +32,6 @@ final class AppKernel extends Kernel
             new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
-            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         ];
 
         return array_merge($preResourceBundles, $bundles);
