@@ -3,7 +3,9 @@ services:
     odiseo_blog.gaufrette:
         class: Gaufrette\Filesystem
         arguments: ["odiseo_blog_image"]
-        factory: 'knp_gaufrette.filesystem_map:get'
+        factory:
+            - '@knp_gaufrette.filesystem_map'
+            - 'get'
 
     odiseo_blog.image_uploader:
         class: Odiseo\BlogBundle\Uploader\ImageUploader
