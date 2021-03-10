@@ -10,9 +10,9 @@ interface ArticleCommentFactoryInterface extends FactoryInterface
 {
     /**
      * @param string $articleId
-     * @param string $commentId
+     * @param string|null $commentId
      * @return ArticleCommentInterface
      * @throws Exception
      */
-    public function createNewWithArticleOrComment(string $articleId, string $commentId): ArticleCommentInterface;
+    public function createNewWithArticleOrComment(string $articleId, ?string $commentId): ArticleCommentInterface;
 }
