@@ -18,16 +18,16 @@ class ArticleComment implements ArticleCommentInterface
     use ToggleableTrait;
 
     /** @var integer */
-    private $id;
+    protected $id;
 
     /** @var string|null */
-    private $comment;
+    protected $comment;
 
     /** @var string|null */
-    private $name;
+    protected $name;
 
     /** @var string|null */
-    private $email;
+    protected $email;
 
     /** @var ArticleInterface|null */
     protected $article;
