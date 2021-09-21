@@ -1,3 +1,8 @@
+parameters:
+    odiseo_blog.model.article.class: Odiseo\BlogBundle\Model\Article
+    odiseo_blog.model.article_category.class: Odiseo\BlogBundle\Model\ArticleCategory
+    odiseo_blog.model.article_comment.class: Odiseo\BlogBundle\Model\ArticleComment
+
 imports:
     - { resource: "grids/*" }
 
