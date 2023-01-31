@@ -13,7 +13,7 @@ use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
  */
 final class OdiseoBlogBundle extends AbstractResourceBundle
 {
-    protected $mappingFormat = ResourceBundleInterface::MAPPING_YAML;
+    protected string $mappingFormat = ResourceBundleInterface::MAPPING_YAML;
 
     /**
      * {@inheritdoc}
