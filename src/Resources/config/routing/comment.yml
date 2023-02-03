@@ -2,7 +2,7 @@ odiseo_blog_partial_comment_create:
     path: /{articleId}/comment/new
     methods: [GET, POST]
     defaults:
-        _controller: odiseo_blog.controller.article_comment:createAction
+        _controller: odiseo_blog.controller.article_comment::createAction
         _sylius:
             event: article_comment_create
             template: $template

@@ -9,8 +9,8 @@
         "friendsofsymfony/ckeditor-bundle": "^1.1 || ^2.1",
         "knplabs/knp-gaufrette-bundle": "^0.5 || ^0.7",
         "sylius/grid-bundle": "^1.6",
-        "sylius/resource-bundle": "^1.4",
-        "symfony/framework-bundle": "^4.4 || ^5.2",
+        "sylius/resource-bundle": "^1.9",
+        "symfony/framework-bundle": "^4.4 || ^5.2 || ^6.0",
         "symfony/orm-pack": "^1.0"
     },
     "require-dev": {
@@ -36,11 +36,11 @@
         "phpunit/phpunit": "^9.5",
         "sensiolabs/security-checker": "^6.0",
         "sylius-labs/coding-standard": "^3.1",
-        "symfony/browser-kit": "^4.4 || ^5.2",
-        "symfony/debug-bundle": "^4.4 || ^5.2",
-        "symfony/dotenv": "^4.4 || ^5.2",
-        "symfony/intl": "^4.4 || ^5.2",
-        "symfony/web-profiler-bundle": "^4.4 || ^5.2",
+        "symfony/browser-kit": "^4.4 || ^5.2 || ^6.0",
+        "symfony/debug-bundle": "^4.4 || ^5.2 || ^6.0",
+        "symfony/dotenv": "^4.4 || ^5.2 || ^6.0",
+        "symfony/intl": "^4.4 || ^5.2 || ^6.0",
+        "symfony/web-profiler-bundle": "^4.4 || ^5.2 || ^6.0",
         "vimeo/psalm": "4.4.1"
     },
     "prefer-stable": true,
