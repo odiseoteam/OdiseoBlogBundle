@@ -7,7 +7,7 @@
         "php": "^7.4 || ^8.0",
         "excelwebzone/recaptcha-bundle": "^1.5",
         "friendsofsymfony/ckeditor-bundle": "^1.1 || ^2.1",
-        "knplabs/knp-gaufrette-bundle": "^0.5 || ^0.7",
+        "knplabs/knp-gaufrette-bundle": "^0.5 || ^0.7 || ^0.8",
         "sylius/grid-bundle": "^1.6",
         "sylius/resource-bundle": "^1.9",
         "symfony/framework-bundle": "^4.4 || ^5.2 || ^6.0",
