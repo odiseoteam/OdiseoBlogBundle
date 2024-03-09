@@ -20,7 +20,9 @@ Odiseo\BlogBundle\Model\ArticleTranslation:
             type: text
         metaKeywords:
             type: string
+            column: meta_keywords
             nullable: true
         metaDescription:
             type: text
+            column: meta_description
             nullable: true
