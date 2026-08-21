@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
+    <a href="https://odiseo.io/en?utm_source=github&utm_medium=readme&utm_campaign=blog-bundle" target="_blank" title="Odiseo">
         <img src="https://github.com/odiseoteam/OdiseoBlogBundle/blob/master/logo_odiseo.png" alt="Odiseo" width="300px" />
     </a>
     <br />
@@ -10,9 +10,6 @@
     </a>
     <a href="https://packagist.org/packages/odiseoteam/blog-bundle" title="Version" target="_blank">
         <img src="https://img.shields.io/packagist/v/odiseoteam/blog-bundle.svg" />
-    </a>
-    <a href="http://travis-ci.org/odiseoteam/OdiseoBlogBundle" title="Build status" target="_blank">
-        <img src="https://img.shields.io/travis/odiseoteam/OdiseoBlogBundle/master.svg" />
     </a>
     <a href="https://scrutinizer-ci.com/g/odiseoteam/OdiseoBlogBundle/" title="Scrutinizer" target="_blank">
         <img src="https://img.shields.io/scrutinizer/g/odiseoteam/OdiseoBlogBundle.svg" />
@@ -95,4 +92,4 @@ You can follow the instructions to test this bundle in the proper documentation 
     
 ## Credits
 
-This plugin is maintained by <a href="https://odiseo.io/en">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
+This plugin is maintained by [Odiseo](https://odiseo.io/en?utm_source=github&utm_medium=readme&utm_campaign=blog-bundle), a team of senior developers. Want us to help you with this bundle or any Symfony project? [Get in touch](https://odiseo.io/en/contact-us?utm_source=github&utm_medium=readme&utm_campaign=blog-bundle).
