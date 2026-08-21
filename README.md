@@ -95,4 +95,4 @@ You can follow the instructions to test this bundle in the proper documentation 
     
 ## Credits
 
-This plugin is maintained by <a href="https://odiseo.com.ar">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
+This plugin is maintained by <a href="https://odiseo.io/en">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
